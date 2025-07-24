@@ -5,6 +5,12 @@ class MovieCatalog:
     def __init__(self):
         self.movies = []
 
+    # Return all movies
+    def get_all_movies(self):
+        if not self.movies:
+            print("The catalog is currently empty.")
+        return self.movies
+
     # Add a movie to the catalog
     def add_movie(self, title, genre):
         if not title or not genre:
@@ -35,6 +41,7 @@ class MovieCatalog:
 
 def main():
     catalog = MovieCatalog()
+
     print("Welcome to the Movie Catalog!")
     print("Available genres:", ", ".join(MovieCatalog.VALID_GENRES))
 
