@@ -1,4 +1,5 @@
 class MovieCatalog:
+
     # Define valid genres
     VALID_GENRES = ["drama", "comedy", "sci-fi", "action", "horror"]
 
@@ -38,6 +39,12 @@ class MovieCatalog:
         if not self.movies:
             print("The catalog is currently empty.")
         return self.movies
+    
+    # Filter by genre
+    def get_movies_by_genre(self, genre):
+        genre = genre.strip().lower()
+        return [movie for movie in self.movies if movie["genre"] == genre]
+    
 
 def main():
     catalog = MovieCatalog()
@@ -68,6 +75,18 @@ def main():
     for movie in movies:
         print(f" {movie['title']} ({movie['genre']})")
 
+     # Show available genres before asking
+    print("Available genres:", ", ".join(MovieCatalog.VALID_GENRES))
+
+    genre = input("Enter a genre to filter by: ").strip()
+    filtered = catalog.get_movies_by_genre(genre)
+
+    if not filtered:
+        print(f"No movies found for genre '{genre}'.")
+    else:
+        print(f"\n Movies in genre '{genre}':")
+        for movie in filtered:
+            print(f"{movie['title']} ({movie['genre']})")
 
 if __name__ == "__main__":
     main()
