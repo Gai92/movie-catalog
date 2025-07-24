@@ -1,10 +1,15 @@
-
 class MovieCatalog:
     # Define valid genres
     VALID_GENRES = ["drama", "comedy", "sci-fi", "action", "horror"]
 
     def __init__(self):
         self.movies = []
+
+    # Return all movies
+    def get_all_movies(self):
+        if not self.movies:
+            print("The catalog is currently empty.")
+        return self.movies
 
     # Add a movie to the catalog
     def add_movie(self, title, genre):
@@ -28,8 +33,15 @@ class MovieCatalog:
         return movie
 
 
+    # Return all movies
+    def get_all_movies(self):
+        if not self.movies:
+            print("The catalog is currently empty.")
+        return self.movies
+
 def main():
     catalog = MovieCatalog()
+
     print("Welcome to the Movie Catalog!")
     print("Available genres:", ", ".join(MovieCatalog.VALID_GENRES))
 
@@ -49,6 +61,12 @@ def main():
             print(f" '{movie['title']}' added successfully.")
         except ValueError as e:
             print(f" Error: {e}")
+
+    #Print all movies
+    print("\nAll Movies in Catalog:")
+    movies = catalog.get_all_movies()
+    for movie in movies:
+        print(f" {movie['title']} ({movie['genre']})")
 
 
 if __name__ == "__main__":
