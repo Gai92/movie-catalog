@@ -19,11 +19,15 @@ class TestMovieCatalog(unittest.TestCase):
         movies = self.catalog.get_all_movies()
         self.assertEqual(len(movies), 2)
 
-    # filter by genre
+    #filter by genre
     def test_get_movies_by_genre(self):
         sci_fi_movies = self.catalog.get_movies_by_genre("sci-fi")
         self.assertEqual(len(sci_fi_movies), 1)
         self.assertEqual(sci_fi_movies[0]["title"], "Matrix")
+
+    #invalid genre
+    def test_add_movie_with_invalid_genre(self):
+        self.catalog.add_movie("Lord of the Rings", "fantasy")  # 'fantasy' is not a valid genre
 
 if __name__ == "__main__":
     unittest.main()
